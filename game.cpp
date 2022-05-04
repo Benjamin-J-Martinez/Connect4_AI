@@ -9,8 +9,14 @@ bool Game::turn(int col, int player)
         {
             gameBoard.update(i, col, player);
             return true;
-        }       
+        }
     }
 
     return false;
 }
+
+Board Game::getBoard()
+{
+	return gameBoard;
+}
+
