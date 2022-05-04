@@ -4,11 +4,13 @@ void displayBoard(Game c)
 {
 	Board board = c.getBoard();
 
+	cout << "--------------- " << endl;
+
 	for(int i = 0; i < ROWS; i++)
 	{
 		cout << "|";
 
-		for(int j = 0; j < COLS; i++)
+		for(int j = 0; j < COLS; j++)
 		{
 			if(board.getStatus(i,j) == 0)
 			{
@@ -25,7 +27,8 @@ void displayBoard(Game c)
 		}
 		cout << endl;
 	}
-	cout << " 1 " << " 2 " << " 3 " << " 4 " << " 5 " << " 6 " << " 7 " << endl;
+	cout << "--------------- " << endl;
+	cout << " 1 " << "2 " << "3 " << "4 " << "5 " << "6 " << "7" << endl;
 }
 
 void start()
