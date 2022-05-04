@@ -1,8 +1,11 @@
 #include "game.h"
 
+Game::Game()
+{
+
+}
 bool Game::turn(int col, int player)
 {
-    int status;
     for(int i = ROWS - 1; i >= 0; i--)
     {
         if(gameBoard.getStatus(i, col) == 0)

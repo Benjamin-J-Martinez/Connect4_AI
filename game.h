@@ -9,8 +9,10 @@ class Game
         Board gameBoard;
 
     public:
+        Game();
         int check_game_status(Board b);
         bool turn(int col, int player);
+        Board getBoard();
 };
 
 #endif

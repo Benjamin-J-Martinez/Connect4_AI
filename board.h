@@ -10,6 +10,7 @@ class Board
         int board[6][7];
 
     public:
+        Board();
         void update(int x, int y, int status);
         int getStatus(int x, int y);
 };
