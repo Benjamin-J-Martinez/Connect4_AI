@@ -1,7 +1,7 @@
 #include "board.h"
 
 void Board::update(int x, int y, int status) {board[x][y] = status; }
-int Board::getStatus(int x, int y) {return board[x][x]; }
+int Board::getSpace(int x, int y) {return board[x][x]; }
 Board::Board()
 {
     for(int i = 0; i < ROWS; i++)

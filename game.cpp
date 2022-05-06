@@ -8,7 +8,7 @@ bool Game::turn(int col, int player)
 {
     for(int i = ROWS - 1; i >= 0; i--)
     {
-        if(gameBoard.getStatus(i, col) == 0)
+        if(gameBoard.getSpace(i, col) == 0)
         {
             gameBoard.update(i, col, player);
             return true;
@@ -21,5 +21,10 @@ bool Game::turn(int col, int player)
 Board Game::getBoard()
 {
 	return gameBoard;
+}
+
+int Game::check_game_status()
+{
+
 }
 

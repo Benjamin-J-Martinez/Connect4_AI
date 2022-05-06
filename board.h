@@ -8,11 +8,12 @@ class Board
 {
     private:
         int board[6][7];
+        int status;
 
     public:
         Board();
         void update(int x, int y, int status);
-        int getStatus(int x, int y);
+        int getSpace(int x, int y);
 };
 
 #endif

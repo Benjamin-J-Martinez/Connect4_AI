@@ -10,7 +10,7 @@ class Game
 
     public:
         Game();
-        int check_game_status(Board b);
+        int check_game_status();
         bool turn(int col, int player);
         Board getBoard();
 };
