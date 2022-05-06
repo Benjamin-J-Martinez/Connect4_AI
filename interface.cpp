@@ -1,5 +1,9 @@
 #include "interface.h"
 
+/* Parameters: an object of type Game
+ * Return: N/A
+ * Description: displays the current game board
+ */
 void displayBoard(Game c)
 {
 	Board board = c.getBoard();
@@ -31,6 +35,10 @@ void displayBoard(Game c)
 	cout << " 1 " << "2 " << "3 " << "4 " << "5 " << "6 " << "7" << endl;
 }
 
+/* Parameters: an object of type Game
+ * Return: N/A
+ * Description: displays the start menu of the game, prompts for choice from the user based on the menu's options
+ */
 void start(Game c)
 {
     int choice;
@@ -55,7 +63,7 @@ void start(Game c)
 		play_AI(c);
 	else
 	{
-		cout << "Goodbye :(((" << endl; 
+		cout << "Goodbye :(((" << endl;
 		return;
 
 	}
@@ -63,8 +71,6 @@ void start(Game c)
 
 void play_two_users(Game c)
 {
-	getUserTurn(1);
-
 	while(c.check_game_status() < 2 && c.check_game_status() > 0)
 	{
 	}
@@ -75,16 +81,17 @@ void play_AI(Game c)
 	cout << "You are now play with AI" << endl;
 }
 
+/* Parameters: int variable, either 1 or 2, representing which player's turn it is
+ * Return: N/A
+ * Description: this function checks whose turn it currently is, prompts the user for input and checks if the move is valid, if it is then the move will occur, not then the user
+   will be notified of this invalid move and will be asked to re-enter a choice
+ */
 void getUserTurn(int currentPlayer)
 {
-	int col;
 	Game game;
-	bool meow = false;
+	int col;
 
-	while(meow == false)
-	{
-
-	if(currentPlayer == 1)
+	if(currentPlayer == 1) //checks if it is player 1s turn
 	{
 		cout << "Player " << currentPlayer << " choose a column: " << endl;
 		cin  >> col;
@@ -120,5 +127,4 @@ void getUserTurn(int currentPlayer)
 
 
         }
-	}
 }
