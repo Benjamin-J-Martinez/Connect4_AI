@@ -43,7 +43,12 @@ int Game::check_game_status()
                 p2++;
                 p1 = 0;
             }
-            
+            else
+            {
+                p1 = 0;
+                p2 = 0;
+            }
+
             if(p1 == 4)
                 return 1;
             
@@ -70,7 +75,12 @@ int Game::check_game_status()
                 p2++;
                 p1 = 0;
             }
-            
+            else
+            {
+                p1 = 0;
+                p2 = 0;
+            }
+
             if(p1 == 4)
                 return 1;
             
@@ -104,6 +114,11 @@ int Game::check_game_status()
                 p2++;
                 p1 = 0;
             }
+            else
+            {
+                p1 = 0;
+                p2 = 0;
+            }
             
             if(p1 == 4)
                 return 1;
@@ -132,6 +147,11 @@ int Game::check_game_status()
                 p2++;
                 p1 = 0;
             }
+            else
+            {
+                p1 = 0;
+                p2 = 0;
+            }
             
             if(p1 == 4)
                 return 1;
@@ -144,7 +164,6 @@ int Game::check_game_status()
         p2 = 0;
     }
     
-    // top-left to bottom-right - red diagonals
     for(int colStart = 1; colStart < COLS - 3; colStart++)
     {
         int row, col;
@@ -159,6 +178,11 @@ int Game::check_game_status()
             {
                 p2++;
                 p1 = 0;
+            }
+            else
+            {
+                p1 = 0;
+                p2 = 0;
             }
             
             if(p1 == 4)
