@@ -28,8 +28,6 @@ int Game::check_game_status()
     Board board = getBoard();
     int p1, p2;
 
-    p1 = 0;
-    p2 = 0;
     //checks rows for a connect 4
     for(int i = ROWS-1; i >= 0; i--)
     {
@@ -52,10 +50,11 @@ int Game::check_game_status()
             if(p2 == 4)
                 return 2;
         }
+
+        p1 = 0;
+        p2 = 0;
     }
 
-    p1 = 0;
-    p2 = 0;
     //checks columns for a connect 4
     for(int j = 0; j < COLS; j++)
     {
@@ -78,10 +77,11 @@ int Game::check_game_status()
             if(p2 == 4)
                 return 2;
         }
+
+        p1 = 0;
+        p2 = 0;
     }
 
-    p1 = 0;
-    p2 = 0;
     //checks diagnol for a connect 4
     for(int line = 1; line <= (ROWS + COLS - 1); line++)
     {
@@ -90,7 +90,6 @@ int Game::check_game_status()
         int temp = (line < (COLS - start_col)) ? line : (COLS - start_col);
         int count = (temp < ROWS) ? temp : ROWS;
 
-        /* Print elements of this line */
         for(int j = 0; j < count; j++)
         {
             int minu = (ROWS < line) ? ROWS : line;
@@ -112,6 +111,9 @@ int Game::check_game_status()
             if(p2 == 4)
                 return 2;
         }
+
+        p1 = 0;
+        p2 = 0;
     }
 
     return 0;

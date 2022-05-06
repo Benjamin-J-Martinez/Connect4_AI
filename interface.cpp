@@ -73,7 +73,9 @@ void play_two_users(Game& c)
 {
 	int numTurns = 1;
 	int currentTurn = 1;
-	while(c.check_game_status() == 0 && numTurns < 42)
+	int gameStatus = c.check_game_status();
+
+	while(gameStatus == 0 && numTurns < 42)
 	{
 		displayBoard(c);
 		if(!getUserTurn(c, currentTurn))
@@ -86,6 +88,20 @@ void play_two_users(Game& c)
 			currentTurn = 1;
 
 		numTurns++;
+		gameStatus = c.check_game_status();
+
+		if(gameStatus == 1)
+		{
+			displayBoard(c);
+			cout << "PLAYER 1 WINS!!" << endl;
+		}
+		
+		if(gameStatus == 2)
+		{
+			displayBoard(c);
+			cout << "PLAYER 2 WINS!!" << endl;
+		}
+			
 	}
 }
 
