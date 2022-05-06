@@ -93,14 +93,13 @@ void getUserTurn(int currentPlayer)
 
 	if(currentPlayer == 1) //checks if it is player 1s turn
 	{
-		cout << "Player " << currentPlayer << " choose a column: " << endl;
+		cout << "Player " << currentPlayer << " choose a column(1-7): " << endl;
 		cin  >> col;
 
 		col--;
 
 		if((col >= 0 && col < 7) && game.turn(col, currentPlayer) == true)
 		{
-			displayBoard(game);
                         currentPlayer = 2;
 		}
 		else
@@ -110,14 +109,13 @@ void getUserTurn(int currentPlayer)
 	}
 	else if(currentPlayer == 2)
         {
-                cout << "Player " << currentPlayer << " choose a column: " << endl;
+                cout << "Player " << currentPlayer << " choose a column(1-7): " << endl;
                 cin  >> col;
 
 		col--;
 
 		if((col >= 0 && col < 7) && game.turn(col, currentPlayer) == true)
                 {
-                        displayBoard(game);
                         currentPlayer = 1;
                 }
                 else

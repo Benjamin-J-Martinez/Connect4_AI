@@ -18,7 +18,7 @@ bool Game::turn(int col, int player)
     return false;
 }
 
-Board Game::getBoard()
+Board& Game::getBoard()
 {
 	return gameBoard;
 }

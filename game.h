@@ -12,7 +12,7 @@ class Game
         Game();
         int check_game_status();
         bool turn(int col, int player);
-        Board getBoard();
+        Board& getBoard();
 };
 
 #endif
