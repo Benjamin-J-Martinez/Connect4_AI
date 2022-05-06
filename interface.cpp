@@ -107,7 +107,48 @@ void play_two_users(Game& c)
 
 void play_AI(Game c)
 {
-	cout << "You are now play with AI" << endl;
+	int numTurns = 1;
+	int currentTurn = 1;
+	int gameStatus = c.check_game_status();
+
+	while(gameStatus == 0 && numTurns < 42)
+	{
+		displayBoard(c);
+
+		if(currentTurn == 1)
+		{
+			if(!getUserTurn(c, currentTurn))
+				continue;
+			else
+				currentTurn = 2;
+		}
+		else
+		{
+			
+		}
+		
+
+		if(currentTurn == 1)
+			currentTurn = 2;
+		else
+			currentTurn = 1;
+
+		numTurns++;
+		gameStatus = c.check_game_status();
+
+		if(gameStatus == 1)
+		{
+			displayBoard(c);
+			cout << "PLAYER 1 WINS!!" << endl;
+		}
+		
+		if(gameStatus == 2)
+		{
+			displayBoard(c);
+			cout << "PLAYER 2 WINS!!" << endl;
+		}
+			
+	}
 }
 
 /* Parameters: int variable, either 1 or 2, representing which player's turn it is
