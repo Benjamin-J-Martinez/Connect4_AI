@@ -9,5 +9,6 @@ void displayBoard(Game c);
 void start(Game c);
 void play_two_users(Game c);
 void play_AI(Game c);
+void getUserTurn(int currentTurn);
 
 #endif
