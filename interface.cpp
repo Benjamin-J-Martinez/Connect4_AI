@@ -69,10 +69,23 @@ void start(Game c)
 	}
 }
 
-void play_two_users(Game c)
+void play_two_users(Game& c)
 {
-	while(c.check_game_status() < 2 && c.check_game_status() > 0)
+	int numTurns = 1;
+	int currentTurn = 1;
+	while(c.check_game_status() == 0 && numTurns < 42)
 	{
+		displayBoard(c);
+		if(!getUserTurn(c, currentTurn))
+			continue;
+
+
+		if(currentTurn == 1)
+			currentTurn = 2;
+		else
+			currentTurn = 1;
+
+		numTurns++;
 	}
 }
 
@@ -86,43 +99,18 @@ void play_AI(Game c)
  * Description: this function checks whose turn it currently is, prompts the user for input and checks if the move is valid, if it is then the move will occur, not then the user
    will be notified of this invalid move and will be asked to re-enter a choice
  */
-void getUserTurn(int currentPlayer)
+bool getUserTurn(Game& c, int currentPlayer)
 {
-	Game game;
 	int col;
 
-	if(currentPlayer == 1) //checks if it is player 1s turn
-	{
-		cout << "Player " << currentPlayer << " choose a column(1-7): " << endl;
+		cout << "Player " << currentPlayer << " choose a column(1-7): ";
 		cin  >> col;
 
 		col--;
 
-		if((col >= 0 && col < 7) && game.turn(col, currentPlayer) == true)
-		{
-                        currentPlayer = 2;
-		}
-		else
-		{
-			cout << "Invalid move" << endl;
-		}
-	}
-	else if(currentPlayer == 2)
-        {
-                cout << "Player " << currentPlayer << " choose a column(1-7): " << endl;
-                cin  >> col;
+		if((col >= 0 && col < 7) && c.turn(col, currentPlayer) == true)
+            return true;
 
-		col--;
-
-		if((col >= 0 && col < 7) && game.turn(col, currentPlayer) == true)
-                {
-                        currentPlayer = 1;
-                }
-                else
-                {
-                        cout << "Invalid move" << endl;
-                }
-
-
-        }
+		cout << "Invalid move" << endl;
+		return false;
 }
