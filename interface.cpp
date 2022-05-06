@@ -75,7 +75,7 @@ void play_two_users(Game& c)
 	int currentTurn = 1;
 	int gameStatus = c.check_game_status();
 
-	while(gameStatus == 0 && numTurns < 42)
+	while(gameStatus == 0 && numTurns <= 42)
 	{
 		displayBoard(c);
 		if(!getUserTurn(c, currentTurn))
