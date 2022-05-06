@@ -18,7 +18,7 @@ void displayBoard(Game c)
 			}
 			else if(board.getSpace(i,j) == 1)
 			{
-				cout << " X|";
+				cout << "X|";
 			}
 			else
 			{
@@ -63,13 +63,62 @@ void start(Game c)
 
 void play_two_users(Game c)
 {
+	getUserTurn(1);
+
 	while(c.check_game_status() < 2 && c.check_game_status() > 0)
 	{
-		
 	}
 }
 
 void play_AI(Game c)
 {
 	cout << "You are now play with AI" << endl;
+}
+
+void getUserTurn(int currentPlayer)
+{
+	int col;
+	Game game;
+	bool meow = false;
+
+	while(meow == false)
+	{
+
+	if(currentPlayer == 1)
+	{
+		cout << "Player " << currentPlayer << " choose a column: " << endl;
+		cin  >> col;
+
+		col--;
+
+		if((col >= 0 && col < 7) && game.turn(col, currentPlayer) == true)
+		{
+			displayBoard(game);
+                        currentPlayer = 2;
+		}
+		else
+		{
+			cout << "Invalid move" << endl;
+		}
+	}
+	else if(currentPlayer == 2)
+        {
+                cout << "Player " << currentPlayer << " choose a column: " << endl;
+                cin  >> col;
+
+		col--;
+
+		if((col >= 0 && col < 7) && game.turn(col, currentPlayer) == true)
+                {
+                        displayBoard(game);
+                        currentPlayer = 1;
+                }
+                else
+                {
+                        cout << "Invalid move" << endl;
+                }
+
+
+        }
+	}
 }

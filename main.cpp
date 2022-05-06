@@ -9,6 +9,8 @@ int main()
 	cout << connect4.getBoard().getStatus(0,2) << endl;
 	 cout << connect4.getBoard().getStatus(0,1) << endl;
   */  displayBoard(connect4);
-   
+
+	start(connect4);
+
     return 0;
 }

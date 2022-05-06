@@ -25,6 +25,6 @@ Board Game::getBoard()
 
 int Game::check_game_status()
 {
-
+	
 }
 
