@@ -16,15 +16,15 @@ void displayBoard(Game c)
 
 		for(int j = 0; j < COLS; j++)
 		{
-			if(board.getSpace(i,j) == 0)
+			if(board.getSpace(i,j) == 0) //empty space on the board
 			{
 				cout << " |";
 			}
-			else if(board.getSpace(i,j) == 1)
+			else if(board.getSpace(i,j) == 1) // player 1s moves represneted on the board with an X
 			{
 				cout << "X|";
 			}
-			else
+			else // player 2s moves represneted on the board with an O
 			{
 				cout << "O|";
 			}
@@ -127,7 +127,7 @@ void play_AI(Game c)
 
 	int col = rand() % 7;
 
-	while(gameStatus == 0 && numTurns < 42)
+	while(gameStatus == 0 && numTurns <= 42)
 	{
 		displayBoard(c);
 
