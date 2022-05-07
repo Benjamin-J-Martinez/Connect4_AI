@@ -69,15 +69,19 @@ void start(Game c)
 	}
 }
 
+/* Parameters: an object of type Game
+ * Return: N/A
+ * Description: runs a game of user vs user
+ */
 void play_two_users(Game& c)
 {
 	int numTurns = 1;
 	int currentTurn = 1;
 	int gameStatus = c.check_game_status();
 
-	while(gameStatus == 0 && numTurns <= 42)
+	while(gameStatus == 0 && numTurns <= 42) //game runs till their is a winner or 42 turns have been played, filling the board
 	{
-		displayBoard(c);
+		displayBoard(c); // initial, empty board is displayed
 		if(!getUserTurn(c, currentTurn))
 			continue;
 
@@ -88,23 +92,32 @@ void play_two_users(Game& c)
 			currentTurn = 1;
 
 		numTurns++;
-		gameStatus = c.check_game_status();
+		gameStatus = c.check_game_status(); //check for winner or a draw after a turn is made
 
-		if(gameStatus == 1)
+		if(gameStatus == 1) // game is ended if player 1 connects 4 in a row, displaying that they have won
 		{
-			displayBoard(c);
+			displayBoard(c); //display final board
 			cout << "PLAYER 1 WINS!!" << endl;
 		}
 		
-		if(gameStatus == 2)
+		if(gameStatus == 2) // game is ended if player 2 connects 4 in a row, displaying that they have won
 		{
-			displayBoard(c);
+			displayBoard(c); //display final board
 			cout << "PLAYER 2 WINS!!" << endl;
 		}
-			
+		
+		if(numTurns > 42) // once the board is full, print the final board and tell the user that a draw has occured
+        	{
+                	displayBoard(c);
+                	cout << "Draw" << endl;
+        	}
 	}
 }
 
+/* Parameters: an object of type Game
+ * Return: N/A
+ * Description: runs a game of user vs AI
+ */
 void play_AI(Game c)
 {
 	srand(time(NULL));
@@ -142,18 +155,23 @@ void play_AI(Game c)
 		numTurns++;
 		gameStatus = c.check_game_status();
 
-		if(gameStatus == 1)
+		if(gameStatus == 1) //game is ended if player 1 connects 4 in a row, displaying that they have won
 		{
-			displayBoard(c);
+			displayBoard(c); //display final board
 			cout << "PLAYER 1 WINS!!" << endl;
 		}
 		
-		if(gameStatus == 2)
+		if(gameStatus == 2) // game is ended if player 2 connects 4 in a row, displaying that they have won
 		{
-			displayBoard(c);
+			displayBoard(c); //display final board
 			cout << "PLAYER 2 WINS!!" << endl;
 		}
 			
+		if(numTurns > 42) // once the board is full, print the final board and tell the user that a draw has occured
+		{
+			displayBoard(c);
+			cout << "Draw" << endl;
+		}
 	}
 }
 
@@ -166,14 +184,14 @@ bool getUserTurn(Game& c, int currentPlayer)
 {
 	int col;
 
-		cout << "Player " << currentPlayer << " choose a column(1-7): ";
+		cout << "Player " << currentPlayer << " choose a column(1-7): "; //user inputs which column they'd like to make their move in
 		cin  >> col;
 
 		col--;
 
-		if((col >= 0 && col < 7) && c.turn(col, currentPlayer) == true)
+		if((col >= 0 && col < 7) && c.turn(col, currentPlayer) == true) // taken if selected column is valid & move is possible(column is not full)
             return true;
 
-		cout << "Invalid move" << endl;
+		cout << "Invalid move" << endl; // if the selected column is not within 1-7 or the column is full
 		return false;
 }
