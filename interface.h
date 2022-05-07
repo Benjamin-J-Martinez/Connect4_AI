@@ -2,8 +2,9 @@
 #define INTERFACE_H
 
 #include "game.h"
+#include "ai.h"
 #include <iostream>
-#include <stack>
+#include <time.h>
 using namespace std;
 
 void displayBoard(Game c);

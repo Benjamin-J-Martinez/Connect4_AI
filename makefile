@@ -1,5 +1,5 @@
-play:	main.o board.o game.o interface.o
-		g++ -Wall main.cpp board.cpp game.cpp interface.cpp -o play
+play:	main.o board.o game.o interface.o ai.o
+		g++ -Wall main.cpp board.cpp game.cpp interface.cpp ai.cpp -o play
 
 main.o:	main.cpp interface.h
 		g++ -c -Wall main.cpp
@@ -12,6 +12,9 @@ game.o:	game.cpp game.h
 
 interface.o: interface.cpp interface.h
 	g++ -c -Wall interface.cpp
+
+ai.o:	ai.cpp ai.h
+	g++ -c -Wall ai.cpp
 
 clean:
 	-rm *.o play

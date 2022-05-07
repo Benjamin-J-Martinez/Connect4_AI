@@ -107,9 +107,12 @@ void play_two_users(Game& c)
 
 void play_AI(Game c)
 {
+	srand(time(NULL));
 	int numTurns = 1;
 	int currentTurn = 1;
 	int gameStatus = c.check_game_status();
+
+	int col = rand() % 7;
 
 	while(gameStatus == 0 && numTurns < 42)
 	{
@@ -124,15 +127,18 @@ void play_AI(Game c)
 		}
 		else
 		{
+			if(numTurns <= 4)
+			{
+				c.turn(col, 2);
+				numTurns++;
+				currentTurn = 1;
+				continue;
+			}
 			
+			c.turn(best_turn(c), currentTurn);
+			currentTurn = 1;
 		}
 		
-
-		if(currentTurn == 1)
-			currentTurn = 2;
-		else
-			currentTurn = 1;
-
 		numTurns++;
 		gameStatus = c.check_game_status();
 
