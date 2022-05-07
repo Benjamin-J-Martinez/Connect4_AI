@@ -2,6 +2,10 @@
 #include "interface.h"
 using namespace std;
 
+/* Parameters: A game object 
+ * Return: returns an integer representing the best column that the move should be made to
+ * Description: makes a decisions based on the possible moves the ai and user can make to select a coloumn move
+ */
 int best_turn(Game c)
 {
     Game clone = c;

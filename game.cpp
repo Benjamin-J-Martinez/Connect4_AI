@@ -1,9 +1,18 @@
 #include "game.h"
 
+/* Parameters: N/A
+ * Return: N/A
+ * Description: Game object contructor
+ */
 Game::Game()
 {
 
 }
+
+/* Parameters: an integer col representing the column to perfrom the turn and an integer representing the player to go.
+ * Return: Returns true if the turn was succesfull and false otherwise.
+ * Description: performs an turn on the game potentially changing the status.
+ */
 bool Game::turn(int col, int player)
 {
     for(int i = ROWS - 1; i >= 0; i--)
@@ -18,11 +27,19 @@ bool Game::turn(int col, int player)
     return false;
 }
 
+/* Parameters: N/A
+ * Return: A reference to the game Board
+ * Description: returns the memory location of the gameboard
+ */
 Board& Game::getBoard()
 {
 	return gameBoard;
 }
 
+/* Parameters: N/A
+ * Return: returns an integer representing the status of the board 0 = playing, 1= player1 win, 2= player2 win.
+ * Description: checks the status of the game 
+ */
 int Game::check_game_status()
 {
     Board board = getBoard();
@@ -92,7 +109,7 @@ int Game::check_game_status()
         p2 = 0;
     }
 
-    //checks diagnol for a connect 4
+    //checks diagnol for a connect 4 (bottom left to top right)
     for(int line = 1; line <= (ROWS + COLS - 1); line++)
     {
         int start_col =  (0 > line - ROWS) ? 0 : line - ROWS;
@@ -131,6 +148,7 @@ int Game::check_game_status()
         p2 = 0;
     }
 
+    //first half of diagnol (top left to bottom right)
     for(int rowStart = 0; rowStart < ROWS - 3; rowStart++)
     {
         int row, col;
@@ -164,6 +182,7 @@ int Game::check_game_status()
         p2 = 0;
     }
     
+    //second half of diagnol (top left to bottom right)
     for(int colStart = 1; colStart < COLS - 3; colStart++)
     {
         int row, col;

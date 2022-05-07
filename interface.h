@@ -5,6 +5,7 @@
 #include "ai.h"
 #include <iostream>
 #include <time.h>
+#include <limits>
 using namespace std;
 
 void displayBoard(Game c);

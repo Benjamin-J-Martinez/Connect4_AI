@@ -53,6 +53,13 @@ void start(Game c)
         cout << "Select: ";
         cin >> choice;
 
+		if(cin.fail())
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
+			continue;
+		}
+
         if(choice <= 3 && choice >= 1)
             break;
     }
@@ -184,14 +191,28 @@ bool getUserTurn(Game& c, int currentPlayer)
 {
 	int col;
 
-		cout << "Player " << currentPlayer << " choose a column(1-7): "; //user inputs which column they'd like to make their move in
-		cin  >> col;
+	cout << "Player " << currentPlayer << " choose a column(1-7): "; //user inputs which column they'd like to make their move in
+	cin  >> col;
+	while(1)
+	{
+		if(cin.fail())
+		{
+			cin.clear();
+			cin.ignore(numeric_limits<streamsize>::max(),'\n');
+			cout << "Player " << currentPlayer << " choose a column(1-7): ";
+			cin >> col;
+		}
+		else
+			break;
 
-		col--;
+	}
 
-		if((col >= 0 && col < 7) && c.turn(col, currentPlayer) == true) // taken if selected column is valid & move is possible(column is not full)
-            return true;
 
-		cout << "Invalid move" << endl; // if the selected column is not within 1-7 or the column is full
-		return false;
+	col--;
+
+	if((col >= 0 && col < 7) && c.turn(col, currentPlayer)) // taken if selected column is valid & move is possible(column is not full)
+		return true;
+
+	cout << "Invalid move" << endl; // if the selected column is not within 1-7 or the column is full
+	return false;
 }
